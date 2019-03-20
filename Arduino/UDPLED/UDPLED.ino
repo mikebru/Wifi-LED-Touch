@@ -1,5 +1,5 @@
 /*
- *  This sketch sends random data over UDP on a ESP32 device
+ *  This sketch recieves LED data over UDP and outputs it to LEDs
  *
  */
 #include <WiFi.h>
@@ -28,7 +28,6 @@ int led_r = 0;
 int led_g = 0;
 int led_b = 0;
 
-
 // WiFi network name and password:
 const char * networkName = "yourNetwork";
 const char * networkPswd = "yourPassword";
@@ -48,9 +47,7 @@ WiFiUDP udp;
 void setup(){
 
   FastLED.addLeds<NEOPIXEL, DATAPIN>(leds, NUM_LEDS);
-
-  FastLED.show();
-  
+  FastLED.show(); 
   // Initilize hardware serial:
   Serial.begin(115200);
   
@@ -81,12 +78,6 @@ const byte dim_curve[] = {
 void loop(){
   //only send data when connected
   if(connected){
-    //Send a packet
-    //udp.beginPacket(udpAddress,udpPort);
-    //udp.printf("Seconds since boot: %u", millis()/1000);
-    //udp.endPacket();
-
-
     //processing incoming packet, must be called before reading the buffer
     udp.parsePacket();
 
@@ -102,13 +93,10 @@ void loop(){
                
             leds[j].setRGB( led_r, led_g, led_b);
           }
-  }
+        }
         FastLED.show();
         udp.flush();
-      //  delay(10);
-
   }
-  //Wait for 1 second
 }
 
 void connectToWiFi(const char * ssid, const char * pwd){
