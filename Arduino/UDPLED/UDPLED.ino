@@ -9,11 +9,19 @@
 // Because conditional #includes don't work w/Arduino sketches...
 #include <SPI.h>
 
+
+//-- CHANGE THESE -- //
 // Here's how to control the LEDs from any two pins:
 #define DATAPIN 13
 
 // How many leds in your strip?
 #define NUM_LEDS 60
+
+// WiFi network name and password:
+const char * networkName = "yourNetwork";
+const char * networkPswd = "yourPassword";
+
+
 
 // Define the array of leds
 CRGB leds[NUM_LEDS];
@@ -28,9 +36,6 @@ int led_r = 0;
 int led_g = 0;
 int led_b = 0;
 
-// WiFi network name and password:
-const char * networkName = "yourNetwork";
-const char * networkPswd = "yourPassword";
 
 //IP address to send UDP data to:
 // either use the ip address of the server or 
