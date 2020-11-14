@@ -15,15 +15,15 @@
 #define DATAPIN 13
 
 // How many leds in your strip?
-#define NUM_LEDS 55
+#define NUM_LEDS 36
 
 // WiFi network name and password:
 //const char * networkName = "raych";
 //const char * networkPswd = "password";
 
 
-const char * networkName = "Lab IM";
-const char * networkPswd = "raycharles";
+const char * networkName = "DragonCave2.4";
+const char * networkPswd = "Internetdrag0n!";
 
 
 // Define the array of leds
@@ -43,10 +43,10 @@ int led_b = 0;
 //IP address to send UDP data to:
 // either use the ip address of the server or 
 // a network broadcast address
-const char * udpAddress = "192.168.3.100";
+const char * udpAddress = "192.168.1.199";
 const int udpPort = 3333;
 
-IPAddress remoteIP(192,168,3,100);
+IPAddress remoteIP(192,168,1,199);
 int remotePort = 7777;
 char outputBuffer[255];
 
