@@ -16,7 +16,11 @@
 
 // How many leds in your strip?
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define NUM_LEDS 36
+=======
+#define NUM_LEDS 60
+>>>>>>> parent of df0d0ca... Update UDPLED.ino
 =======
 #define NUM_LEDS 60
 >>>>>>> parent of df0d0ca... Update UDPLED.ino
@@ -27,9 +31,12 @@ const char * networkPswd = "yourPassword";
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const char * networkName = "DragonCave2.4";
 const char * networkPswd = "Internetdrag0n!";
 
+=======
+>>>>>>> parent of df0d0ca... Update UDPLED.ino
 =======
 >>>>>>> parent of df0d0ca... Update UDPLED.ino
 
@@ -51,6 +58,7 @@ int led_b = 0;
 // either use the ip address of the server or 
 // a network broadcast address
 <<<<<<< HEAD
+<<<<<<< HEAD
 const char * udpAddress = "192.168.1.199";
 const int udpPort = 3333;
 
@@ -63,6 +71,11 @@ unsigned long startMillis;
 const unsigned long period = 5000;
 
 
+=======
+const char * udpAddress = "192.168.0.20";
+const int udpPort = 3333;
+
+>>>>>>> parent of df0d0ca... Update UDPLED.ino
 =======
 const char * udpAddress = "192.168.0.20";
 const int udpPort = 3333;
