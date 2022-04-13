@@ -13,32 +13,12 @@
 //-- CHANGE THESE -- //
 // Here's how to control the LEDs from any two pins:
 #define DATAPIN 13
-
-// How many leds in your strip?
-<<<<<<< HEAD
-<<<<<<< HEAD
-#define NUM_LEDS 36
-=======
 #define NUM_LEDS 60
->>>>>>> parent of df0d0ca... Update UDPLED.ino
-=======
-#define NUM_LEDS 60
->>>>>>> parent of df0d0ca... Update UDPLED.ino
 
 // WiFi network name and password:
 const char * networkName = "yourNetwork";
 const char * networkPswd = "yourPassword";
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-const char * networkName = "DragonCave2.4";
-const char * networkPswd = "Internetdrag0n!";
-
-=======
->>>>>>> parent of df0d0ca... Update UDPLED.ino
-=======
->>>>>>> parent of df0d0ca... Update UDPLED.ino
 
 // Define the array of leds
 CRGB leds[NUM_LEDS];
@@ -57,8 +37,6 @@ int led_b = 0;
 //IP address to send UDP data to:
 // either use the ip address of the server or 
 // a network broadcast address
-<<<<<<< HEAD
-<<<<<<< HEAD
 const char * udpAddress = "192.168.1.199";
 const int udpPort = 3333;
 
@@ -70,17 +48,6 @@ unsigned long currentMillis;
 unsigned long startMillis;
 const unsigned long period = 5000;
 
-
-=======
-const char * udpAddress = "192.168.0.20";
-const int udpPort = 3333;
-
->>>>>>> parent of df0d0ca... Update UDPLED.ino
-=======
-const char * udpAddress = "192.168.0.20";
-const int udpPort = 3333;
-
->>>>>>> parent of df0d0ca... Update UDPLED.ino
 //Are we currently connected?
 boolean connected = false;
 
@@ -174,6 +141,3 @@ void WiFiEvent(WiFiEvent_t event){
           break;
     }
 }
-
-
-
