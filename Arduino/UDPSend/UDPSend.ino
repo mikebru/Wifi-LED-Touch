@@ -9,13 +9,8 @@
 #include <SPI.h>
 
 
-//IP address to send UDP data to:
-// either use the ip address of the server or 
-// a network broadcast address
-const char * udpAddress = "192.168.1.199";
-const int udpPort = 3333;
 
-IPAddress remoteIP(10,0,8,111);
+IPAddress remoteIP(192,168,1,8);
 int remotePort = 7777;
 
 unsigned long currentMillis;
@@ -23,14 +18,15 @@ unsigned long startMillis;
 const unsigned long period = 5000;
 
 // WiFi network name and password:
-const char * networkName = "DistributionOffice";
-const char * networkPswd = "SquareOctober51";
+const char * networkName = "InteractiveNature-2.4G";
+const char * networkPswd = "ricksaidso";
 
 //Are we currently connected?
 boolean connected = false;
 
 
-char msg[20];
+char outputBuffer[255];
+
 
 //The udp library class
 WiFiUDP udp;
@@ -50,14 +46,25 @@ void loop(){
   //only send data when connected
   if(connected){
 
-    udp.beginPacket(remoteIP , remotePort);
-    sprintf(msg, "DP_Scale=%d", 1);
-
-    udp.print(msg);
-
-    udp.endPacket();
+    SendVoltage();
   }
 
+}
+
+
+void SendVoltage()
+{
+  float voltage = (float(analogRead(35))/4095)* 2 * 3.3 * 1.1;
+  udp.beginPacket(remoteIP, remotePort);
+
+  String message = WiFi.localIP().toString() +"/" + (String)voltage;
+  Serial.println(message);
+
+  message.toCharArray(outputBuffer, 255);
+
+  //strcpy(outputBuffer, message);   
+  udp.write((byte*)outputBuffer, strlen(outputBuffer));
+  udp.endPacket();
 }
 
 void connectToWiFi(const char * ssid, const char * pwd){
@@ -83,7 +90,7 @@ void WiFiEvent(WiFiEvent_t event){
           Serial.println(WiFi.localIP());  
           //initializes the UDP state
           //This initializes the transfer buffer
-          udp.begin(WiFi.localIP(),udpPort);
+          udp.begin(WiFi.localIP(),remotePort);
           connected = true;
           break;
       case SYSTEM_EVENT_STA_DISCONNECTED:
